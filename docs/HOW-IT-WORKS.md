@@ -1,63 +1,70 @@
 # How Understand Onboard Works
 
-This page expands the concise contract in `SKILL.md`. The diagrams are static SVG files so they render directly on GitHub on both phones and desktop browsers.
+The visuals on this page are static SVGs, so they render directly on GitHub on phones and desktop browsers. Each one is generated from a model specific to this skill.
 
-## End-to-end workflow
+## System architecture
 
-![Step-by-step workflow for Understand Onboard](../assets/workflow.svg)
+![Detailed system map for Understand Onboard](../assets/system-map.svg)
 
-### 1. Confirm the engineering question and allowed scope
+### Components
 
-At this stage, record the relevant input, the decision made, and the evidence that allows the workflow to continue. If the evidence is missing or contradictory, stop and report the blocker before moving to step 2.
-### 2. Inspect the smallest relevant evidence set
+- **1. Repository map:** participates in identify entry points and ownership areas.
+- **2. Runtime surfaces:** participates in map build test and deployment paths.
+- **3. Domain concepts:** participates in extract domain vocabulary from code.
+- **4. Operational workflows:** participates in trace one end-to-end user flow.
+- **5. Onboarding guide:** participates in document common failure surfaces.
 
-At this stage, record the relevant input, the decision made, and the evidence that allows the workflow to continue. If the evidence is missing or contradictory, stop and report the blocker before moving to step 3.
-### 3. Form a testable explanation or change plan
+## Actor and data sequence
 
-At this stage, record the relevant input, the decision made, and the evidence that allows the workflow to continue. If the evidence is missing or contradictory, stop and report the blocker before moving to step 4.
-### 4. Perform the bounded analysis or implementation
+![Actor and data sequence for Understand Onboard](../assets/operation-sequence.svg)
 
-At this stage, record the relevant input, the decision made, and the evidence that allows the workflow to continue. If the evidence is missing or contradictory, stop and report the blocker before moving to step 5.
-### 5. Run focused checks and compare expected behavior
+### 1. Identify entry points and ownership areas
 
-At this stage, record the relevant input, the decision made, and the evidence that allows the workflow to continue. If the evidence is missing or contradictory, stop and report the blocker before moving to step 6.
-### 6. Report evidence, limitations, and next action
+**Primary surface:** `Repository map`
 
-At this stage, record the relevant input, the decision made, and the evidence that allows the workflow to continue. If the evidence is missing or contradictory, stop and report the blocker before moving to step 6.
+Record the concrete input, the operation performed, and the evidence produced at this stage. Continue only when the output is sufficient for the next stage; otherwise preserve the blocker and stop.
+### 2. Map build test and deployment paths
 
-## Safety boundary
+**Primary surface:** `Runtime surfaces`
 
-![Safety and approval boundaries for Understand Onboard](../assets/safety-boundary.svg)
+Record the concrete input, the operation performed, and the evidence produced at this stage. Continue only when the output is sufficient for the next stage; otherwise preserve the blocker and stop.
+### 3. Extract domain vocabulary from code
 
-Before any external write or consequential operation, show the exact target and proposed effect, then obtain explicit authorization.
+**Primary surface:** `Domain concepts`
 
-The workflow must also stop when:
+Record the concrete input, the operation performed, and the evidence produced at this stage. Continue only when the output is sufficient for the next stage; otherwise preserve the blocker and stop.
+### 4. Trace one end-to-end user flow
 
-- The user does not own or control the target.
-- Authentication exists but the requested authority is unclear.
-- Inputs contain private material that is not necessary for the task.
-- A result cannot be verified independently.
-- The requested action conflicts with repository, platform, or organizational policy.
+**Primary surface:** `Operational workflows`
 
-## Evidence model
+Record the concrete input, the operation performed, and the evidence produced at this stage. Continue only when the output is sufficient for the next stage; otherwise preserve the blocker and stop.
+### 5. Document common failure surfaces
 
-| Stage | Evidence to retain |
-| --- | --- |
-| Scope | The exact request, target, constraints, and success criteria. |
-| Inspection | Source files, tool output, or current-state observations actually used. |
-| Decision | The reason for the selected path and any rejected alternatives that affect safety. |
-| Execution | The artifact or bounded operation result—not merely an attempt message. |
-| Verification | A direct check against the target and acceptance criteria. |
-| Handoff | Remaining risks, withheld actions, and the smallest useful next step. |
+**Primary surface:** `Onboarding guide`
 
-## Reliability principles
+Record the concrete input, the operation performed, and the evidence produced at this stage. Continue only when the output is sufficient for the next stage; otherwise preserve the blocker and stop.
+### 6. Assemble a role-aware onboarding path
 
-- Prefer the smallest reversible action that can answer the request.
-- Separate observed facts from interpretations.
-- Never infer permission from a logged-in session alone.
-- Treat failed or missing verification as an incomplete run.
-- Preserve user work and avoid unrelated changes.
+**Primary surface:** `Repository map`
 
-## Capability boundary
+Record the concrete input, the operation performed, and the evidence produced at this stage. Continue only when the output is sufficient for the next stage; otherwise preserve the blocker and stop.
 
-It does not replace project-specific tests, code review, or production approval. This package defines how to reason and verify; the adopter is responsible for connecting compatible tools and testing them in their own environment.
+## Example output shape
+
+![Illustrative output for Understand Onboard](../assets/example-output.svg)
+
+The example is a visual contract: a real run may look different, but it should expose comparable state, provenance, and verification information. It is not presented as evidence of a live external action.
+
+## Decision and stop conditions
+
+![Decision guide for Understand Onboard](../assets/decision-guide.svg)
+
+The workflow stops when the target is ambiguous, the relevant surface is unavailable or unauthorized, or the final artifact cannot be checked. A logged-in session or successful tool call is not by itself proof that the requested outcome is complete.
+
+## Verification checklist
+
+- Confirm every component shown in the system map exists in the target environment.
+- Trace the actor sequence using actual tool output or artifact state.
+- Compare the result with the example-output information contract.
+- Re-read or reopen the final artifact instead of trusting an attempt message.
+- Report omitted stages, unsupported capabilities, and remaining human decisions.
